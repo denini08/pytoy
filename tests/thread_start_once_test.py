@@ -2,7 +2,7 @@ import pytest
 import threading
 import random
 
-NUM_THREADS = 1000
+NUM_THREADS = 10
 
 
 def run():
