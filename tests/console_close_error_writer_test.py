@@ -11,4 +11,4 @@ def test_ok_1():
 
 
 def test_violation_1():
-    sys.stdin.close()
+    sys.stderr.close()
