@@ -1,7 +1,11 @@
-from pythonmop.instrumentation import append_py_instance
+import customint
 
+customint.install_custom_bit_length()
 
 def test01():
     print("Hello, World!")
-    append_py_instance(1, 2)
-    append_py_instance(1, 44)
+    n = -37
+    bin(n)
+    n.bit_length()
+    n.bit_length()
+    n.bit_length()

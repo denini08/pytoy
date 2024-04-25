@@ -2,9 +2,7 @@
 from pythonmop import Spec, call
 import threading
 from pythonmop import instrumentation
-import customint
 
-customint.install_custom_bit_length()
 
 class Int_BitLengthOnce(Spec):
     """
@@ -28,11 +26,11 @@ class Int_BitLengthOnce(Spec):
             f'File {call_file_name}, line {call_line_num}.')
 
 
-spec_instance = Int_BitLengthOnce()
-spec_instance.create_monitor("Int_BitLengthOnce")
+# spec_instance = Int_BitLengthOnce()
+# spec_instance.create_monitor("Int_BitLengthOnce")
 
 
-n = -37
-bin(n)
-n.bit_length()
-n.bit_length()
+# n = -37
+# bin(n)
+# n.bit_length()
+# n.bit_length()
