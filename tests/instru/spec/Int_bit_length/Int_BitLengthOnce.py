@@ -12,9 +12,9 @@ class Int_BitLengthOnce(Spec):
     def __init__(self):
         super().__init__()
 
-        @self.event_before(call(instrumentation, 'bit_length_py_instance'))
+        @self.event_before(call(instrumentation.Instance, 'send_bit_length'))
         def bit_length_py(**kw):
-            print("in bit_length_py in monitor")
+            print("in send_bit_length in monitor")
 
     ere = 'bit_length_py bit_length_py+'
 
