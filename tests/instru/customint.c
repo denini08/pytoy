@@ -53,7 +53,7 @@ static PyObject *custom_bit_length(PyObject *self) {
 }
 
 // Function to replace the bit_length method of the int type
-static PyObject *install_custom_bit_length(PyObject *module) {
+static PyObject *install_custom_bit_length(PyObject *module, PyObject *args) {
     // Find the 'bit_length' method in the list of methods for the int type
     PyMethodDef *methods = PyLong_Type.tp_methods;
     for (; methods->ml_name != NULL; methods++) {
