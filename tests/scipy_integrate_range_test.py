@@ -58,7 +58,7 @@ def test_violation_1():
 
     print(scipy.integrate.quad(integral_fun, np.inf, 100001))
 
-    
+
 def test_violation_2():
     mu1 = 0
     mu2 = 0
