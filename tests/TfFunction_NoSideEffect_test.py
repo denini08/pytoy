@@ -26,6 +26,25 @@ def test_ok_3():
 
     print('hi')
 
+def test_ok_4():
+    def nested_1():
+        def nested_2():
+            def nested_3():
+                @tf.function
+                def append_to_list(x):
+                    mylist = [2, 3]
+                    mylist.append(x) # ok list is defined within the tf.function
+                    return x * x
+
+                # Testing the monkey-patched tf.function
+                append_to_list(tf.constant(2))
+                append_to_list(tf.constant(2))
+                append_to_list(tf.constant(2))
+
+            nested_3()
+        nested_2()
+    nested_1()
+
 def test_violation_1():
     @tf.function
     def append_to_list(x):
@@ -44,3 +63,41 @@ def test_violation_2():
 
     # Testing the monkey-patched tf.function
     append_to_list(tf.constant(2))
+
+mylist = [2, 3]
+def test_violation_3():
+    def nested_1():
+        def nested_2():
+            def nested_3():
+                @tf.function
+                def append_to_list(x):
+                    mylist.append(x) # violation (side effect in a tf.function)
+                    return x * x
+
+                # Testing the monkey-patched tf.function
+                append_to_list(tf.constant(2))
+                append_to_list(tf.constant(2))
+                append_to_list(tf.constant(2))
+
+            nested_3()
+        nested_2()
+    nested_1()
+
+def test_violation_4():
+    mylist = []
+    def nested_1():
+        def nested_2():
+            def nested_3():
+                @tf.function
+                def append_to_list(x):
+                    mylist.append(x) # violation (side effect in a tf.function)
+                    return x * x
+
+                # Testing the monkey-patched tf.function
+                append_to_list(tf.constant(2))
+                append_to_list(tf.constant(2))
+                append_to_list(tf.constant(2))
+
+            nested_3()
+        nested_2()
+    nested_1()
