@@ -49,17 +49,26 @@ def test_violation_1():
 
 
 def test_violation_2():
-    class A:
+    class MutableSymbol:
         prop = 'A'
 
         def __hash__(self):
             return hash(self.prop)
 
-    a = A()
-    nonterminal = Nonterminal(a)
-    nonterminal.symbol()
+    a = MutableSymbol()
+    A = Nonterminal(a)
+
+    grammar = CFG(
+        start=A,
+        productions=[
+            Production(A, ['a'])
+        ]
+    )
+
+    print(grammar.productions(lhs=A))  # Expected to show "A -> 'a'"
 
     # mutate the symbol
     a.prop = 'B'
 
-    nonterm = nonterminal.symbol()
+    # Attempt to use the grammar after mutation
+    print(grammar.productions(lhs=A))  # Might still show "B -> 'a'", but it's incorrect usage
