@@ -1,4 +1,5 @@
 import xml.parsers.expat
+import threading
 
 def test_ok_1():
     # Create an XML parser object
@@ -30,3 +31,17 @@ def test_violation_2():
     # </root> instead of <root> however, it is not checked
     # because is_final = False
     p.Parse('<root>', False)
+
+class MyClassThread(threading.Thread):
+    def run(self):
+        print("Thread started")
+
+def test_ok_44():
+    # create a new thread and start it
+    t = MyClassThread()
+    t.start()
+    t.start()
+
+def test_kkk():
+    a = 10
+

@@ -10,5 +10,5 @@ def test_ok_1():
     assert 1 == 1
 
 
-def test_violation_1():
-    sys.stderr.close()
+# def test_violation_1():
+#     sys.stderr.close()

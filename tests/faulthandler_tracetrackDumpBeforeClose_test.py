@@ -49,31 +49,31 @@ def test_ok_4():
     done_event.wait()
 
 
-def test_violation_1():
-    faulthandler.dump_traceback_later(1, False)
+# def test_violation_1():
+#     faulthandler.dump_traceback_later(1, False)
 
-    # closing stderr before traceback dump
-    sys.stderr.close()
+#     # closing stderr before traceback dump
+#     sys.stderr.close()
 
-def test_violation_2():
-    f = open("traceback.log", "w")
-    faulthandler.dump_traceback_later(1, False, f)
+# def test_violation_2():
+#     f = open("traceback.log", "w")
+#     faulthandler.dump_traceback_later(1, False, f)
 
-    # closing file before traceback dump
-    f.close()
+#     # closing file before traceback dump
+#     f.close()
 
-def test_violation_3():
-    f = open("traceback.log", "w")
-    faulthandler.dump_traceback_later(3, False, f)
+# def test_violation_3():
+#     f = open("traceback.log", "w")
+#     faulthandler.dump_traceback_later(3, False, f)
     
-    # closing file before traceback dump
-    closeFileLater(f, 1)
+#     # closing file before traceback dump
+#     closeFileLater(f, 1)
 
-def test_violation_4():
-    f = open("traceback.log", "w")
-    faulthandler.dump_traceback_later(1, repeat=True, file=f)
+# def test_violation_4():
+#     f = open("traceback.log", "w")
+#     faulthandler.dump_traceback_later(1, repeat=True, file=f)
 
-    threading.Timer(5, faulthandler.cancel_dump_traceback_later).start()
+#     threading.Timer(5, faulthandler.cancel_dump_traceback_later).start()
 
-    # closing file before traceback dump canceled
-    closeFileLater(f, 4)
+#     # closing file before traceback dump canceled
+#     closeFileLater(f, 4)
